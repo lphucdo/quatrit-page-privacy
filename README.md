@@ -1,71 +1,71 @@
 # Privacy / Legal Documents
 
-Folder này chứa tài liệu pháp lý cho Meta App **"Quản Trị Page"** (App ID: 1477228617423402) — dùng để submit cho Meta for Developers App Review.
+This folder contains legal documents for the Meta App **"Quản Trị Page"** (App ID: 1477228617423402) — used for submitting to Meta for Developers App Review.
 
 ## Files
 
-| File | Ngôn ngữ | Mục đích | Trạng thái |
-|------|----------|----------|------------|
-| [`index.html`](./index.html) | 🇻🇳/🇬🇧 Song ngữ | Trang chủ pháp lý hoàn thiện để deploy GitHub Pages | ✨ Ready |
-| [`privacy-policy.vi.md`](./privacy-policy.vi.md) | 🇻🇳 Tiếng Việt | Bản nháp Privacy Policy (review nội bộ) | 📝 Draft |
-| [`privacy-policy.en.md`](./privacy-policy.en.md) | 🇬🇧 English | Bản nháp Privacy Policy tiếng Anh | 📝 Draft |
-| [`terms-of-service.vi.md`](./terms-of-service.vi.md) | 🇻🇳 Tiếng Việt | Bản nháp Terms of Service (review nội bộ) | 📝 Draft |
-| [`terms-of-service.en.md`](./terms-of-service.en.md) | 🇬🇧 English | Bản nháp Terms of Service tiếng Anh | 📝 Draft |
-| [`DEPLOY-CHECKLIST.md`](./DEPLOY-CHECKLIST.md) | 🇻🇳 Việt | Checklist các bước submit App Review (Internal Tool) | 🔄 Updated |
-| [`VIDEO-GUIDE.md`](./VIDEO-GUIDE.md) | 🇻🇳/🇬🇧 Song ngữ | Hướng dẫn quay video demo nộp Meta Review | ✨ New |
+| File | Language | Purpose | Status |
+|------|----------|---------|--------|
+| [`index.html`](./index.html) | 🇻🇳/🇬🇧 Bilingual | Production-ready legal page for GitHub Pages deployment | ✨ Ready |
+| [`privacy-policy.vi.md`](./privacy-policy.vi.md) | 🇻🇳 Vietnamese | Privacy Policy draft (internal review) | 📝 Draft |
+| [`privacy-policy.en.md`](./privacy-policy.en.md) | 🇬🇧 English | English Privacy Policy draft | 📝 Draft |
+| [`terms-of-service.vi.md`](./terms-of-service.vi.md) | 🇻🇳 Vietnamese | Terms of Service draft (internal review) | 📝 Draft |
+| [`terms-of-service.en.md`](./terms-of-service.en.md) | 🇬🇧 English | English Terms of Service draft | 📝 Draft |
+| [`DEPLOY-CHECKLIST.md`](./DEPLOY-CHECKLIST.md) | 🇻🇳 Vietnamese | App Review submission checklist (Internal Tool) | 🔄 Updated |
+| [`VIDEO-GUIDE.md`](./VIDEO-GUIDE.md) | 🇻🇳/🇬🇧 Bilingual | Demo video recording guide for Meta Review | ✨ New |
 
-## Tại sao cần folder này?
+## Why is this folder needed?
 
-Khi chuyển App từ **Development mode → Live mode** trên Meta for Developers, Meta yêu cầu:
+When switching an App from **Development mode → Live mode** on Meta for Developers, Meta requires:
 
-1. **Privacy Policy URL** (URL thật, accessible)
-2. **Terms of Service URL** (khuyến nghị nhưng optional)
-3. Sau đó mới có thể submit **App Review** cho permission `pages_manage_posts`
+1. **Privacy Policy URL** (a real, publicly accessible URL)
+2. **Terms of Service URL** (recommended but optional)
+3. After that, you can submit an **App Review** for the `pages_manage_posts` permission
 
-## Workflow tổng thể
+## Overall Workflow
 
 ```
-Bản draft (file .md trong Obsidian)
+Draft documents (.md files)
         ↓
-A review + chỉnh sửa nội dung
+Review & edit content
         ↓
-Upload lên hosting công cộng (GitHub Pages / Notion / Google Sites)
+Upload to public hosting (GitHub Pages / Notion / Google Sites)
         ↓
-Copy URL vào Meta for Developers → App Settings → Basic Information
+Copy URL into Meta for Developers → App Settings → Basic Information
         ↓
-Switch toggle: Phát triển → Chính thức
+Switch toggle: Development → Live
         ↓
-Submit App Review cho `pages_manage_posts`
+Submit App Review for `pages_manage_posts`
 ```
 
-## Chuẩn bị trước khi deploy
+## Before Deploying
 
-Trước khi a upload public, cần thay các placeholder trong file:
+Before uploading publicly, make sure the following placeholders are replaced:
 
-| Placeholder | Thay bằng |
-|-------------|-----------|
-| `lamdo9@icloud.com` | Email liên hệ (đã có sẵn) |
-| `2026-07-04` | Effective date chính thức (đã OK) |
-| `Phúc Lâm` | Tên admin (đã OK) |
+| Placeholder | Replace with |
+|-------------|--------------|
+| `lamdo9@icloud.com` | Contact email (already set) |
+| `2026-07-04` | Official effective date (already OK) |
+| `Phúc Lâm` | Admin name (already OK) |
 
-## Hosting options (free)
+## Hosting Options (Free)
 
-| Service | URL format | Setup time | Custom domain |
+| Service | URL Format | Setup Time | Custom Domain |
 |---------|-----------|-----------|----------------|
 | **GitHub Pages** | `username.github.io/repo` | 10 min | ✅ Free |
 | **Notion** | `notion.site/...` | 5 min | ❌ |
 | **Google Sites** | `sites.google.com/view/...` | 5 min | ❌ |
 | **Cloudflare Pages** | `project.pages.dev` | 15 min | ✅ Free |
 
-→ Recommend: **GitHub Pages** (chuyên nghiệp, free, custom domain support, ổn định lâu dài).
+→ Recommended: **GitHub Pages** (professional, free, custom domain support, long-term stable).
 
-## Lưu ý quan trọng
+## Important Notes
 
-- ⚠️ Meta yêu cầu Privacy Policy phải accessible mà không cần login
-- ⚠️ Reviewer của Meta sẽ click vào URL → nội dung phải hiển thị ngay
-- ⚠️ Sau khi deploy, **không thay đổi** trừ khi phiên bản policy đã cập nhật (vì Meta có cache URL)
+- ⚠️ Meta requires the Privacy Policy to be accessible without login
+- ⚠️ Meta's reviewers will click the URL — content must load immediately
+- ⚠️ After deploying, **do not change the URL** unless the policy version has been updated (Meta caches the URL)
 
 ---
 
-📜 **Version**: 1.0 (draft) — chưa submit Meta
+📜 **Version**: 1.0 (draft) — not yet submitted to Meta  
 🗓️ **Last updated**: 2026-07-04

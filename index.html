@@ -308,8 +308,8 @@
 
             <!-- Language Selector -->
             <div class="control-group">
-                <button class="btn active" id="btn-vi" onclick="setLang('vi')">Tiếng Việt</button>
-                <button class="btn" id="btn-en" onclick="setLang('en')">English</button>
+                <button class="btn" id="btn-vi" onclick="setLang('vi')">Tiếng Việt</button>
+                <button class="btn active" id="btn-en" onclick="setLang('en')">English</button>
             </div>
         </div>
     </header>
@@ -317,7 +317,7 @@
     <main class="content-wrapper">
         
         <!-- VIETNAMESE PRIVACY POLICY -->
-        <div id="doc-privacy-vi" class="doc-section active">
+        <div id="doc-privacy-vi" class="doc-section">
             <h1>Chính sách bảo mật — Quản Trị Page</h1>
             
             <div class="alert-box">
@@ -496,7 +496,7 @@
         </div>
 
         <!-- ENGLISH PRIVACY POLICY -->
-        <div id="doc-privacy-en" class="doc-section">
+        <div id="doc-privacy-en" class="doc-section active">
             <h1>Privacy Policy — Quản Trị Page</h1>
             
             <div class="alert-box">
@@ -779,7 +779,7 @@
 
 <script>
     let currentDoc = 'privacy';
-    let currentLang = 'vi';
+    let currentLang = 'en';
 
     function setDoc(doc) {
         currentDoc = doc;
