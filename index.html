@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Center - Quản Trị Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --container-bg: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --border-color: #e2e8f0;
+            --table-header-bg: #f1f5f9;
+            --accent-bg: #f0f9ff;
+            --accent-border: #bae6fd;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --container-bg: #1e293b;
+                --text-primary: #f8fafc;
+                --text-secondary: #94a3b8;
+                --primary: #38bdf8;
+                --primary-hover: #7dd3fc;
+                --border-color: #334155;
+                --table-header-bg: #1e293b;
+                --accent-bg: #0c4a6e;
+                --accent-border: #0284c7;
+                --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        /* Header Navigation */
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--container-bg);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .app-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .app-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .app-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-name {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .app-id {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .control-group {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.25rem;
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .btn {
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn.active {
+            background-color: var(--container-bg);
+            color: var(--primary);
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+            font-weight: 600;
+        }
+
+        /* Content Area */
+        .content-wrapper {
+            padding: 2.5rem 2rem;
+        }
+
+        .doc-section {
+            display: none;
+        }
+
+        .doc-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography & elements mapping from Markdown */
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+        }
+
+        .alert-box {
+            background-color: var(--accent-bg);
+            border-left: 4px solid var(--primary);
+            border-top: 1px solid var(--accent-border);
+            border-right: 1px solid var(--accent-border);
+            border-bottom: 1px solid var(--accent-border);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tables mapping */
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="app-title-group">
+            <div class="app-logo">QP</div>
+            <div class="app-meta">
+                <span class="app-name">Quản Trị Page</span>
+                <span class="app-id">App ID: 1477228617423402</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <!-- Doc Selector -->
+            <div class="control-group">
+                <button class="btn active" id="btn-privacy" onclick="setDoc('privacy')">Privacy Policy</button>
+                <button class="btn" id="btn-terms" onclick="setDoc('terms')">Terms of Service</button>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="control-group">
+                <button class="btn active" id="btn-vi" onclick="setLang('vi')">Tiếng Việt</button>
+                <button class="btn" id="btn-en" onclick="setLang('en')">English</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <!-- VIETNAMESE PRIVACY POLICY -->
+        <div id="doc-privacy-vi" class="doc-section active">
+            <h1>Chính sách bảo mật — Quản Trị Page</h1>
+            
+            <div class="alert-box">
+                <strong>Hiệu lực từ:</strong> 04/07/2026 | <strong>Cập nhật lần cuối:</strong> 04/07/2026 | <strong>Phiên bản:</strong> 1.0
+            </div>
+
+            <h2>1. Tổng quan</h2>
+            <p><strong>"Quản Trị Page"</strong> (App ID: <code>1477228617423402</code>, loại Business) là công cụ quản lý nội dung cho Facebook Pages, được phát triển và vận hành bởi cá nhân <strong>Phúc Lâm</strong>.</p>
+            <p>Chính sách bảo mật này giải thích dữ liệu nào được thu thập khi bạn sử dụng app, cách dữ liệu được sử dụng, bảo vệ và các quyền của bạn với dữ liệu của mình. App được thiết kế với nguyên tắc <strong>thu thập tối thiểu</strong> — chỉ lấy đúng những gì cần để vận hành tính năng chính (lên lịch và đăng bài viết trên các Facebook Pages).</p>
+
+            <h2>2. Dữ liệu chúng tôi thu thập</h2>
+            <h3>2.1 Khi bạn đăng nhập bằng Facebook</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dữ liệu</th>
+                            <th>Mục đích</th>
+                            <th>Bắt buộc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Page Access Token</strong></td>
+                            <td>Cho phép app gọi Graph API thay mặt bạn để publish/schedule bài viết.</td>
+                            <td>✅ Có</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Danh sách Pages</strong> (id, tên, danh mục)</td>
+                            <td>Hiển thị pages bạn quản trị để chọn đăng.</td>
+                            <td>✅ Có</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tên + avatar Facebook</strong></td>
+                            <td>Xác minh danh tính admin.</td>
+                            <td>✅ Có</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Dữ liệu này chỉ được truyền từ Meta đến thiết bị của bạn qua Graph API theo phạm vi quyền truy cập bạn đã phê duyệt. App không can thiệp vào quá trình này.</p>
+
+            <h3>2.2 Khi bạn sử dụng app</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dữ liệu</th>
+                            <th>Mô tả</th>
+                            <th>Nơi lưu trữ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Caption text</strong></td>
+                            <td>Văn bản bài đăng do bạn nhập.</td>
+                            <td>File Markdown local + asset folder</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ảnh / Video</strong></td>
+                            <td>File media bạn chọn để đăng.</td>
+                            <td>File local trong thư mục drafts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lịch đăng</strong></td>
+                            <td>Thời gian + trạng thái đăng bài (draft/scheduled/posted).</td>
+                            <td>Frontmatter trong file Markdown local</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FB post ID sau đăng</strong></td>
+                            <td>ID bài đăng do Meta trả về sau khi xuất bản.</td>
+                            <td>Lưu trong logs tracking nội bộ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>2.3 Logs kỹ thuật</h3>
+            <ul>
+                <li><strong>API errors</strong>: lỗi response từ Meta API (status code + message) phục vụ sửa lỗi.</li>
+                <li><strong>Thời gian phản hồi</strong>: dùng để tối ưu hiệu năng cục bộ.</li>
+                <li><strong>IP local</strong>: chỉ sử dụng nội bộ để tự bảo vệ giới hạn tần suất gửi (rate-limit), không gửi ra ngoài.</li>
+            </ul>
+
+            <h3>2.4 Dữ liệu chúng tôi KHÔNG thu thập</h3>
+            <ul>
+                <li>Thông tin cá nhân (PII) của <strong>người theo dõi</strong> page của bạn.</li>
+                <li>Tin nhắn riêng tư trên Facebook.</li>
+                <li>Comments hoặc nội dung tương tác của người dùng trên bài viết.</li>
+                <li>Cookies, browser fingerprint, device ID, vị trí GPS.</li>
+            </ul>
+
+            <h2>3. Cách chúng tôi sử dụng dữ liệu</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mục đích</th>
+                            <th>Dữ liệu cần thiết</th>
+                            <th>Loại hoạt động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Lên lịch và đăng bài viết</strong></td>
+                            <td>Token + caption + media + lịch</td>
+                            <td>Gọi Graph API theo lịch bạn đã đặt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Quản lý nhiều Pages</strong></td>
+                            <td>Danh sách Pages + ID</td>
+                            <td>Hiển thị trong UI app</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phân tích hiệu quả</strong></td>
+                            <td>Reach, engagement (từ Meta API)</td>
+                            <td>Hiển thị metrics cho admin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hỗ trợ kỹ thuật</strong></td>
+                            <td>Logs lỗi</td>
+                            <td>Debug khi API call thất bại</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Dữ liệu của bạn <strong>KHÔNG</strong> được sử dụng để: Huấn luyện AI/ML, bán/cho thuê cho bên thứ ba, hay quảng cáo dựa trên hành vi.</p>
+
+            <h2>4. Chia sẻ dữ liệu</h2>
+            <p>Dữ liệu của bạn chỉ được chia sẻ duy nhất với <strong>Meta Platforms (Facebook, Inc.)</strong> qua Graph API theo đúng quyền bạn cấp. Chúng tôi không tích hợp bất kỳ dịch vụ analytics bên thứ ba (như Google Analytics, Mixpanel) hay bán dữ liệu cho ad networks.</p>
+
+            <h2>5. Lưu trữ và bảo mật</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Loại dữ liệu</th>
+                            <th>Nơi lưu</th>
+                            <th>Bảo mật</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Page Access Token</td>
+                            <td>File <code>.env</code> local</td>
+                            <td>Bảo vệ quyền truy cập cục bộ (chmod 600)</td>
+                        </tr>
+                        <tr>
+                            <td>Caption / media / lịch</td>
+                            <td>Folder <code>drafts/</code> local</td>
+                            <td>Không tự động sync cloud</td>
+                        </tr>
+                        <tr>
+                            <td>Logs kỹ thuật</td>
+                            <td>File local tạm thời</td>
+                            <td>Tự động xoá sau 24 giờ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Không có database trên cloud.</strong> Mọi dữ liệu chỉ chạy cục bộ trên thiết bị cá nhân của bạn. Không có máy chủ trung gian từ xa thu thập thông tin.</p>
+
+            <h2>6. Quyền của bạn</h2>
+            <ul>
+                <li><strong>Thu hồi quyền truy cập</strong>: Bất kỳ lúc nào qua Meta Settings &rarr; Business Integrations.</li>
+                <li><strong>Yêu cầu xóa dữ liệu</strong>: Liên hệ email <code>lamdo9@icloud.com</code>, yêu cầu sẽ được thực hiện trong vòng 7 ngày.</li>
+                <li><strong>Sửa đổi thông tin</strong>: Bạn có thể tự do thay đổi file cấu hình và nội dung cục bộ trên máy.</li>
+            </ul>
+
+            <h2>7. Liên hệ</h2>
+            <p>Mọi câu hỏi, yêu cầu hoặc khiếu nại về chính sách bảo mật, xin vui lòng gửi về:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:lamdo9@icloud.com">lamdo9@icloud.com</a></li>
+                <li><strong>Chủ sở hữu:</strong> Phúc Lâm</li>
+            </ul>
+        </div>
+
+        <!-- ENGLISH PRIVACY POLICY -->
+        <div id="doc-privacy-en" class="doc-section">
+            <h1>Privacy Policy — Quản Trị Page</h1>
+            
+            <div class="alert-box">
+                <strong>Effective Date:</strong> July 4, 2026 | <strong>Last Updated:</strong> July 4, 2026 | <strong>Version:</strong> 1.0
+            </div>
+
+            <h2>1. Overview</h2>
+            <p><strong>"Quản Trị Page"</strong> (App ID: <code>1477228617423402</code>, Business type) is a content management utility for Facebook Pages, developed and operated by <strong>Phúc Lâm</strong> (individual).</p>
+            <p>This privacy policy explains what data is collected when you use the app, how that data is used and protected, and your rights regarding your data. The app is built on the principle of <strong>data minimization</strong> — collecting only what is strictly necessary to perform its core function (scheduling and publishing posts to your Facebook Pages).</p>
+
+            <h2>2. Data We Collect</h2>
+            <h3>2.1 When you log in with Facebook</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Purpose</th>
+                            <th>Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Page Access Tokens</strong></td>
+                            <td>Allow the app to call Graph API on your behalf to publish/schedule posts.</td>
+                            <td>✅ Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>List of Pages</strong> (id, name, category)</td>
+                            <td>Display pages you manage for publishing selection.</td>
+                            <td>✅ Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Facebook name + avatar</strong></td>
+                            <td>Verify admin identity.</td>
+                            <td>✅ Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>This data is transmitted directly from Meta to your device via the standard Meta OAuth flow, scoped only to permissions you explicitly approve. The app does not intercept or transmit this data to other systems.</p>
+
+            <h3>2.2 When using the app</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Description</th>
+                            <th>Storage location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Caption text</strong></td>
+                            <td>The text content of your posts.</td>
+                            <td>Local Markdown files</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Images / Videos</strong></td>
+                            <td>Media files you upload to post.</td>
+                            <td>Local files in drafts directory</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Schedule metadata</strong></td>
+                            <td>Publish time and status (draft/scheduled/posted).</td>
+                            <td>YAML frontmatter in local Markdown files</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Facebook post IDs</strong></td>
+                            <td>Post IDs returned by Meta after successful publishing.</td>
+                            <td>Local tracking logs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>2.3 Technical Logs</h3>
+            <ul>
+                <li><strong>API errors</strong>: error responses from Meta API (status code + message) used for troubleshooting.</li>
+                <li><strong>Response times</strong>: used locally for performance debugging.</li>
+                <li><strong>Local IP</strong>: only used for local rate-limit protection, never transmitted elsewhere.</li>
+            </ul>
+
+            <h3>2.4 What we do NOT collect</h3>
+            <ul>
+                <li>Personal information (PII) of your Page followers or audiences.</li>
+                <li>Private messages on Facebook.</li>
+                <li>Comments or user-generated responses on your published posts.</li>
+                <li>Cookies, browser fingerprints, device IDs, or precise GPS location data.</li>
+            </ul>
+
+            <h2>3. How We Use Your Data</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Data Needed</th>
+                            <th>Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Schedule & publish posts</strong></td>
+                            <td>Token + caption + media + schedule</td>
+                            <td>Call Graph API at scheduled times</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Manage multiple Pages</strong></td>
+                            <td>Pages list + IDs</td>
+                            <td>Display in local app UI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Analyze performance</strong></td>
+                            <td>Reach, engagement (from Meta API)</td>
+                            <td>Display metrics to the admin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technical support</strong></td>
+                            <td>Error logs</td>
+                            <td>Debug failed API calls</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Your data is <strong>NOT</strong> used to: train AI/ML models, sell/rent to third parties, or construct behavioral advertising profiles.</p>
+
+            <h2>4. Sharing with Third Parties</h2>
+            <p>Your data is shared exclusively with <strong>Meta Platforms (Facebook, Inc.)</strong> via the Graph API within the scope of permissions you grant. We do not use third-party analytics SDKs (e.g., Google Analytics, Mixpanel) or sell data to advertisers.</p>
+
+            <h2>5. Data Retention and Security</h2>
+            <p><strong>There is no cloud database.</strong> All data is stored locally on the admin's personal device. Tokens are stored in a local <code>.env</code> file, and post drafts are kept in a local folder. Technical logs are saved in temporary local directories and deleted automatically after 24 hours.</p>
+
+            <h2>6. Your Rights</h2>
+            <ul>
+                <li><strong>Revoke Access</strong>: Instantly via Meta Settings &rarr; Business Integrations.</li>
+                <li><strong>Request Deletion</strong>: Email us at <a href="mailto:lamdo9@icloud.com">lamdo9@icloud.com</a>. Request will be processed within 7 days.</li>
+                <li><strong>Edit Information</strong>: You can directly modify any local files on your machine.</li>
+            </ul>
+
+            <h2>7. Contact</h2>
+            <p>For any questions or data requests, contact us at:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:lamdo9@icloud.com">lamdo9@icloud.com</a></li>
+                <li><strong>Owner:</strong> Phúc Lâm</li>
+            </ul>
+        </div>
+
+        <!-- VIETNAMESE TERMS OF SERVICE -->
+        <div id="doc-terms-vi" class="doc-section">
+            <h1>Điều khoản dịch vụ — Quản Trị Page</h1>
+            
+            <div class="alert-box">
+                <strong>Hiệu lực từ:</strong> 04/07/2026 | <strong>Cập nhật lần cuối:</strong> 04/07/2026 | <strong>Phiên bản:</strong> 1.0
+            </div>
+
+            <h2>1. Chấp nhận điều khoản</h2>
+            <p>Bằng việc sử dụng Quản Trị Page, bạn đồng ý với các điều khoản trong tài liệu này. Nếu bạn không đồng ý, vui lòng không sử dụng dịch vụ.</p>
+
+            <h2>2. Mô tả dịch vụ</h2>
+            <p>Quản Trị Page là công cụ cho phép admin (chủ sở hữu hoặc nhà quản trị Facebook Pages):</p>
+            <ul>
+                <li>Lên lịch đăng bài viết trên các Facebook Pages mà admin có quyền quản trị.</li>
+                <li>Xem chỉ số thống kê (reach, engagement) sau khi bài đăng được xuất bản.</li>
+                <li>Quản lý nhiều Pages từ một giao diện duy nhất cục bộ.</li>
+            </ul>
+            <p>App này <strong>KHÔNG</strong> phải là công cụ marketing tự động spam, scraping dữ liệu, hay đăng tin tự động hàng loạt để phát tán thư rác.</p>
+
+            <h2>3. Trách nhiệm của người dùng</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>✅ Bạn ĐƯỢC phép</th>
+                            <th>❌ Bạn KHÔNG ĐƯỢC phép</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Đăng nội dung bạn có quyền sở hữu hoặc được phép đăng hợp pháp.</td>
+                            <td>Đăng nội dung spam, lừa đảo, vi phạm bản quyền hay tiêu chuẩn cộng đồng.</td>
+                        </tr>
+                        <tr>
+                            <td>Quản lý Pages bạn sở hữu hoặc được cấp quyền quản trị thực tế.</td>
+                            <td>Cố ý gọi API Meta vượt quá giới hạn tần suất cho phép (rate limit).</td>
+                        </tr>
+                        <tr>
+                            <td>Thu hồi quyền truy cập của app khi không còn nhu cầu sử dụng.</td>
+                            <td>Chia sẻ Page Access Token với các bên thứ ba khác.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>4. Quyền sở hữu trí tuệ</h2>
+            <p>Toàn bộ mã nguồn ứng dụng, thiết kế giao diện cục bộ và tài liệu hướng dẫn thuộc quyền sở hữu của <strong>Phúc Lâm</strong>. Giấy phép sử dụng được cấp miễn phí phục vụ nhu cầu quản trị cá nhân của admin. Nội dung đăng tải (văn bản, hình ảnh, video) hoàn toàn thuộc quyền sở hữu và trách nhiệm pháp lý của bạn.</p>
+
+            <h2>5. Dịch vụ bên thứ ba</h2>
+            <p>Dịch vụ phụ thuộc hoàn toàn vào <strong>Meta Graph API</strong> và kết nối internet bảo mật (HTTPS). Bạn đồng ý rằng tính khả dụng của dịch vụ phụ thuộc vào thời gian hoạt động của API từ phía Meta. Meta có thể thay đổi API hoặc các điều khoản chính sách bất kỳ lúc nào, điều này có thể ảnh hưởng đến một phần hoặc toàn bộ chức năng của ứng dụng.</p>
+
+            <h2>6. Giới hạn trách nhiệm</h2>
+            <p>Ứng dụng được cung cấp theo nguyên tắc <strong>"nguyên trạng" (as-is)</strong>. Chúng tôi không chịu trách nhiệm đối với bất kỳ thiệt hại trực tiếp hoặc gián tiếp nào phát sinh do bài viết bị Meta từ chối, xóa, hoặc do tài khoản bị hạn chế do vi phạm chính sách của Facebook.</p>
+
+            <h2>7. Chấm dứt</h2>
+            <p>Bạn có thể ngừng sử dụng dịch vụ bằng cách gỡ bỏ ứng dụng trong Meta Settings &rarr; Business Integrations bất kỳ lúc nào. Khi đó, toàn bộ Access Token sẽ lập tức vô hiệu hoá.</p>
+
+            <h2>8. Luật áp dụng</h2>
+            <p>Điều khoản này được điều chỉnh và giải thích theo <strong>pháp luật nước Cộng hòa Xã hội Chủ nghĩa Việt Nam</strong>.</p>
+        </div>
+
+        <!-- ENGLISH TERMS OF SERVICE -->
+        <div id="doc-terms-en" class="doc-section">
+            <h1>Terms of Service — Quản Trị Page</h1>
+            
+            <div class="alert-box">
+                <strong>Effective Date:</strong> July 4, 2026 | <strong>Last Updated:</strong> July 4, 2026 | <strong>Version:</strong> 1.0
+            </div>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using Quản Trị Page, you agree to these Terms of Service. If you do not agree, please do not use the Service.</p>
+
+            <h2>2. Service Description</h2>
+            <p>Quản Trị Page is a content scheduling utility that allows page administrators to:</p>
+            <ul>
+                <li>Schedule posts on Facebook Pages they manage.</li>
+                <li>View post metrics (reach, engagement) after publishing.</li>
+                <li>Manage multiple Pages from a single local interface.</li>
+            </ul>
+            <p>This app is <strong>NOT</strong> an automated marketing, scraping, or bulk messaging spam tool.</p>
+
+            <h2>3. User Responsibilities</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>✅ YOU MAY</th>
+                            <th>❌ YOU MAY NOT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Post content you own or have legal rights to publish.</td>
+                            <td>Post spam, deceptive material, copyright violations, or policy-violating content.</td>
+                        </tr>
+                        <tr>
+                            <td>Manage Pages you own or have admin roles on.</td>
+                            <td>Intentionally exceed Meta API rate limits.</td>
+                        </tr>
+                        <tr>
+                            <td>Revoke app access when no longer using the service.</td>
+                            <td>Share Page Access Tokens with third parties.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>4. Intellectual Property</h2>
+            <p>The application code, design, and documents are owned by <strong>Phúc Lâm</strong>. The app is licensed free of charge for personal admin operations. The content you publish (captions, images, videos) remains entirely your intellectual property and under your liability.</p>
+
+            <h2>5. Dependence on Third Parties</h2>
+            <p>The Service depends on the availability of the <strong>Meta Graph API</strong>. Meta may alter its API endpoints, limits, or terms of service at any time, which may temporarily or permanently disrupt app functionality. We are not responsible for disruptions caused by Meta Platforms.</p>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>The Service is provided <strong>"as-is"</strong>. We make no warranties regarding 100% uptime. We are not liable for any direct, indirect, or consequential damages, including posts flagged, rejected, or hidden by Meta, or accounts restricted due to Facebook Policy violations.</p>
+
+            <h2>7. Termination</h2>
+            <p>You can terminate service at any time by removing the application via Meta Settings &rarr; Business Integrations. Doing so invalidates all active Page Tokens immediately.</p>
+
+            <h2>8. Governing Law</h2>
+            <p>These terms are governed by the <strong>laws of the Socialist Republic of Vietnam</strong>.</p>
+        </div>
+
+    </main>
+
+    <footer class="text-center">
+        <p>&copy; 2026 Phúc Lâm. All rights reserved. | Quản Trị Page (App ID: 1477228617423402)</p>
+    </footer>
+</div>
+
+<script>
+    let currentDoc = 'privacy';
+    let currentLang = 'vi';
+
+    function setDoc(doc) {
+        currentDoc = doc;
+        updateUI();
+    }
+
+    function setLang(lang) {
+        currentLang = lang;
+        updateUI();
+    }
+
+    function updateUI() {
+        // Update tabs active state
+        document.getElementById('btn-privacy').classList.toggle('active', currentDoc === 'privacy');
+        document.getElementById('btn-terms').classList.toggle('active', currentDoc === 'terms');
+        
+        // Update lang active state
+        document.getElementById('btn-vi').classList.toggle('active', currentLang === 'vi');
+        document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+
+        // Hide all sections
+        const sections = document.querySelectorAll('.doc-section');
+        sections.forEach(s => s.classList.remove('active'));
+
+        // Show target section
+        const targetId = `doc-${currentDoc}-${currentLang}`;
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.classList.add('active');
+        }
+        
+        // Set document HTML lang
+        document.documentElement.lang = currentLang;
+    }
+
+    // Initialize UI state
+    updateUI();
+</script>
+
+</body>
+</html>
