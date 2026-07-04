@@ -1,72 +1,41 @@
-﻿# Privacy / Legal Documents
+# Quản Trị Page - Legal Documents
 
-This folder contains legal documents for the Meta App **"Quản Trị Page"** (App ID: 1477228617423402) — used for submitting to Meta for Developers App Review.
+This repository hosts the official legal documentation for the Meta App **"Quản Trị Page"** (App ID: `1477228617423402`). These documents are required by Meta for Developers to ensure compliance with data privacy regulations and terms of service when transitioning the application to Live mode.
 
-## Files
+## Available Documents
 
-| File | Language | Purpose | Status |
-|------|----------|---------|--------|
-| [`index.html`](./index.html) | 🇻🇳/🇬🇧 Bilingual | Production-ready legal page for GitHub Pages deployment | ✨ Ready |
-| [`privacy-policy.vi.md`](./privacy-policy.vi.md) | 🇻🇳 Vietnamese | Privacy Policy draft (internal review) | 📝 Draft |
-| [`privacy-policy.en.md`](./privacy-policy.en.md) | 🇬🇧 English | English Privacy Policy draft | 📝 Draft |
-| [`terms-of-service.vi.md`](./terms-of-service.vi.md) | 🇻🇳 Vietnamese | Terms of Service draft (internal review) | 📝 Draft |
-| [`terms-of-service.en.md`](./terms-of-service.en.md) | 🇬🇧 English | English Terms of Service draft | 📝 Draft |
-| [`DEPLOY-CHECKLIST.md`](./DEPLOY-CHECKLIST.md) | 🇻🇳 Vietnamese | App Review submission checklist (Internal Tool) | 🔄 Updated |
-| [`VIDEO-GUIDE.md`](./VIDEO-GUIDE.md) | 🇻🇳/🇬🇧 Bilingual | Demo video recording guide for Meta Review | ✨ New |
+The following legal documents are available in this repository:
 
-## Why is this folder needed?
+- **[Privacy Policy & Terms of Service](./index.html)** (Bilingual: 🇻🇳 Vietnamese & 🇬🇧 English)
+  The primary production-ready document hosted via GitHub Pages. This single-page application contains both the Privacy Policy and Terms of Service, allowing users to easily toggle between languages and document types.
 
-When switching an App from **Development mode → Live mode** on Meta for Developers, Meta requires:
+## Drafts and Internal Resources
 
-1. **Privacy Policy URL** (a real, publicly accessible URL)
-2. **Terms of Service URL** (recommended but optional)
-3. After that, you can submit an **App Review** for the `pages_manage_posts` permission
+For internal review and development purposes, the repository also contains raw markdown drafts and submission guides:
 
-## Overall Workflow
+- **Privacy Policy Drafts:** [`privacy-policy.vi.md`](./privacy-policy.vi.md) | [`privacy-policy.en.md`](./privacy-policy.en.md)
+- **Terms of Service Drafts:** [`terms-of-service.vi.md`](./terms-of-service.vi.md) | [`terms-of-service.en.md`](./terms-of-service.en.md)
+- **Deployment Checklist:** [`DEPLOY-CHECKLIST.md`](./DEPLOY-CHECKLIST.md)
+- **Video Guide:** [`VIDEO-GUIDE.md`](./VIDEO-GUIDE.md) (Instructions for recording the Meta App Review demo video)
 
-```
-Draft documents (.md files)
-        ↓
-Review & edit content
-        ↓
-Upload to public hosting (GitHub Pages / Notion / Google Sites)
-        ↓
-Copy URL into Meta for Developers → App Settings → Basic Information
-        ↓
-Switch toggle: Development → Live
-        ↓
-Submit App Review for `pages_manage_posts`
-```
+## Deployment
 
-## Before Deploying
+This repository is configured to serve the legal documents publicly using **GitHub Pages**. 
 
-Before uploading publicly, make sure the following placeholders are replaced:
+To deploy:
+1. Navigate to the repository **Settings** on GitHub.
+2. Go to the **Pages** section in the left sidebar.
+3. Select the `main` branch as the source and click Save.
+4. Once deployed, the `index.html` file will be accessible via a public URL.
+5. Provide this GitHub Pages URL in the Meta for Developers console under **App Settings > Basic Information**.
 
-| Placeholder | Replace with |
-|-------------|--------------|
-| `lamubboy@gmail.com` | Contact email (already set) |
-| `2026-07-04` | Official effective date (already OK) |
-| `Phúc Lâm` | Admin name (already OK) |
+## Contact Information
 
-## Hosting Options (Free)
+For any inquiries regarding data privacy, data deletion requests, or general support, please contact the application administrator:
 
-| Service | URL Format | Setup Time | Custom Domain |
-|---------|-----------|-----------|----------------|
-| **GitHub Pages** | `username.github.io/repo` | 10 min | ✅ Free |
-| **Notion** | `notion.site/...` | 5 min | ❌ |
-| **Google Sites** | `sites.google.com/view/...` | 5 min | ❌ |
-| **Cloudflare Pages** | `project.pages.dev` | 15 min | ✅ Free |
-
-→ Recommended: **GitHub Pages** (professional, free, custom domain support, long-term stable).
-
-## Important Notes
-
-- ⚠️ Meta requires the Privacy Policy to be accessible without login
-- ⚠️ Meta's reviewers will click the URL — content must load immediately
-- ⚠️ After deploying, **do not change the URL** unless the policy version has been updated (Meta caches the URL)
+- **Developer:** Phúc Lâm
+- **Email:** [lamubboy@gmail.com](mailto:lamubboy@gmail.com)
+- **Effective Date:** July 4, 2026
 
 ---
-
-📜 **Version**: 1.0 (draft) — not yet submitted to Meta  
-🗓️ **Last updated**: 2026-07-04
-
+*© 2026 Phúc Lâm. All rights reserved.*
