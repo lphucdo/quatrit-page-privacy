@@ -1,4 +1,4 @@
-# Privacy / Legal Documents
+﻿# Privacy / Legal Documents
 
 This folder contains legal documents for the Meta App **"Quản Trị Page"** (App ID: 1477228617423402) — used for submitting to Meta for Developers App Review.
 
@@ -44,7 +44,7 @@ Before uploading publicly, make sure the following placeholders are replaced:
 
 | Placeholder | Replace with |
 |-------------|--------------|
-| `lamdo9@icloud.com` | Contact email (already set) |
+| `lamubboy@gmail.com` | Contact email (already set) |
 | `2026-07-04` | Official effective date (already OK) |
 | `Phúc Lâm` | Admin name (already OK) |
 
@@ -69,3 +69,4 @@ Before uploading publicly, make sure the following placeholders are replaced:
 
 📜 **Version**: 1.0 (draft) — not yet submitted to Meta  
 🗓️ **Last updated**: 2026-07-04
+

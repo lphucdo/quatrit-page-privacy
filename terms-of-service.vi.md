@@ -1,4 +1,4 @@
----
+﻿---
 title: "Điều khoản dịch vụ — Quản Trị Page"
 app_name: "Quản Trị Page"
 app_id: "1477228617423402"
@@ -177,7 +177,7 @@ Mọi câu hỏi hoặc yêu cầu về điều khoản dịch vụ:
 
 | Kênh | Chi tiết |
 |------|----------|
-| 📧 **Email** | `lamdo9@icloud.com` |
+| 📧 **Email** | `lamubboy@gmail.com` |
 | 👤 **Owner** | Phúc Lâm |
 | 📱 **App** | Quản Trị Page (App ID: 1477228617423402) |
 
@@ -195,7 +195,7 @@ Mọi câu hỏi hoặc yêu cầu về điều khoản dịch vụ:
 | **Tuân thủ Meta** | Mọi hoạt động qua Meta API phải theo Meta Policy |
 | **Dữ liệu của a** | A sở hữu; có thể xóa/xuất bất kỳ lúc nào |
 | **Luật áp dụng** | Việt Nam |
-| **Liên hệ** | lamdo9@icloud.com |
+| **Liên hệ** | lamubboy@gmail.com |
 
 ---
 
@@ -210,3 +210,4 @@ Mọi câu hỏi hoặc yêu cầu về điều khoản dịch vụ:
 ---
 
 📜 **Bản nháp này tuân theo Meta Platform Policy** và pháp luật Việt Nam về dịch vụ điện tử.
+

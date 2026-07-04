@@ -1,4 +1,4 @@
----
+﻿---
 title: "Privacy Policy — Quản Trị Page"
 app_name: "Quản Trị Page"
 app_id: "1477228617423402"
@@ -14,7 +14,7 @@ status: draft
 
 > 📌 **Status**: DRAFT — not yet published.
 > Before deploying:
-> - Verify contact email (`lamdo9@icloud.com`) is monitored
+> - Verify contact email (`lamubboy@gmail.com`) is monitored
 > - Review each section
 > - See `DEPLOY-CHECKLIST.md` for the pre-submission checklist
 > - Vietnamese version available at `privacy-policy.vi.md`
@@ -134,9 +134,9 @@ The app is **not classified as "spyware / surveillance"** and does not track use
 | Right | How to exercise | Response time |
 |------|----------------|---------------|
 | 🔓 **Revoke access** | Meta Settings → Business Integrations → Remove "Quản Trị Page" app | Immediate |
-| 🗑️ **Request data deletion** | Email `lamdo9@icloud.com` (subject: "Data Deletion") | Within **7 days** |
-| 📥 **Request data export** | Email `lamdo9@icloud.com` (subject: "Data Export") | Within **7 days** |
-| 👁️ **View stored data** | Email `lamdo9@icloud.com` (subject: "View Data") | Within **7 days** |
+| 🗑️ **Request data deletion** | Email `lamubboy@gmail.com` (subject: "Data Deletion") | Within **7 days** |
+| 📥 **Request data export** | Email `lamubboy@gmail.com` (subject: "Data Export") | Within **7 days** |
+| 👁️ **View stored data** | Email `lamubboy@gmail.com` (subject: "View Data") | Within **7 days** |
 | ✏️ **Edit information** | Modify directly in app or local files | Immediate |
 | ⚖️ **Complain** | Contact email + your local data protection authority | Per local law |
 
@@ -181,7 +181,7 @@ For any questions, requests, or complaints regarding this privacy policy:
 
 | Channel | Details |
 |---------|---------|
-| 📧 **Email** | `lamdo9@icloud.com` |
+| 📧 **Email** | `lamubboy@gmail.com` |
 | 👤 **Owner** | Phúc Lâm |
 | 📱 **App** | Quản Trị Page (App ID: 1477228617423402) |
 | 📜 **App type** | Business |
@@ -210,3 +210,4 @@ The app requests the following Facebook Graph API permissions:
 ---
 
 📜 **This draft complies with Meta Platform Policy and GDPR minimum requirements** for privacy disclosure on an app using `pages_manage_posts` and `pages_read_engagement` permissions.
+

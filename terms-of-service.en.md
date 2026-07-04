@@ -1,4 +1,4 @@
----
+﻿---
 title: "Terms of Service — Quản Trị Page"
 app_name: "Quản Trị Page"
 app_id: "1477228617423402"
@@ -177,7 +177,7 @@ For any questions or requests regarding these Terms of Service:
 
 | Channel | Details |
 |---------|---------|
-| 📧 **Email** | `lamdo9@icloud.com` |
+| 📧 **Email** | `lamubboy@gmail.com` |
 | 👤 **Owner** | Phúc Lâm |
 | 📱 **App** | Quản Trị Page (App ID: 1477228617423402) |
 
@@ -195,7 +195,7 @@ For any questions or requests regarding these Terms of Service:
 | **Meta compliance** | All activities via Meta API must follow Meta Policy |
 | **Your data** | You own it; can delete/export anytime |
 | **Governing law** | Vietnam |
-| **Contact** | lamdo9@icloud.com |
+| **Contact** | lamubboy@gmail.com |
 
 ---
 
@@ -208,3 +208,4 @@ For any questions or requests regarding these Terms of Service:
 ---
 
 📜 **This draft complies with Meta Platform Policy** and Vietnamese law on electronic services.
+

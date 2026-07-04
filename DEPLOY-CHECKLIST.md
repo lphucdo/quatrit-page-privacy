@@ -1,4 +1,4 @@
-# DEPLOY-CHECKLIST — Meta App Review Submission
+﻿# DEPLOY-CHECKLIST — Meta App Review Submission
 
 Checklist từng bước để submit app **"Quản Trị Page"** vào Meta App Review.
 
@@ -7,7 +7,7 @@ Checklist từng bước để submit app **"Quản Trị Page"** vào Meta App 
 ## Phase 1: Hoàn thiện Privacy Policy (15-30 phút)
 
 - [ ] **1.1** Mở `privacy-policy.vi.md` → review từng section một
-- [ ] **1.2** Verify email `lamdo9@icloud.com` đúng (mục 10)
+- [ ] **1.2** Verify email `lamubboy@gmail.com` đúng (mục 10)
 - [ ] **1.3** Verify các phần "❌ KHÔNG" (chỗ có thể thay đổi)
 - [ ] **1.4** Mở `privacy-policy.en.md` → check đã dịch đúng nghĩa phần tiếng Việt
 - [ ] **1.5** Tìm placeholder bất kỳ (`{{...}}`) → replace hết
@@ -138,3 +138,4 @@ content/privacy/
 🎯 **Owner**: Phúc Lâm
 🗓️ **Created**: 2026-07-04
 📌 **Status**: Ready to deploy
+
